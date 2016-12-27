@@ -48,8 +48,13 @@ public class MainActivity extends AppCompatActivity {
 
         public void removeName(String name){
             int position = names.indexOf(name);
+            if(position == -1){
+                return;
+            }
             names.remove(position);
             notifyItemRemoved(position);
+
+            notifyItemRangeChanged(position,names.size());
         }
 
         @Override
