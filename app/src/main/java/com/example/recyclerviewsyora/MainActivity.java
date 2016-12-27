@@ -62,6 +62,18 @@ public class MainActivity extends AppCompatActivity {
         public NameListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             // 为给定的 View 实例化一个 ViewHolder,创建View
             View view = getLayoutInflater().inflate(R.layout.list_item_name,parent,false);
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                // 因为 ViewHolder 是重复使用的
+                public void onClick(View view) {
+                    // getTag 就是获得 view 的名字
+                    String name = (String) view.getTag();
+//                    Log.e("OnCreateVH",name.toString());
+                    removeName(name);
+                }
+            });
+
             return new NameListViewHolder(view);
         }
 
@@ -71,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
             // populate the view with data at 相应的 position
             String name = names.get(position);
             holder.NameTextView.setText(name);
+
+            holder.itemView.setTag(name);
 
             if(position %2 == 0 ){
                 holder.NameTextView.setBackgroundColor(Color.parseColor("#22000000"));
