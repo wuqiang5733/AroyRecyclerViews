@@ -1,5 +1,6 @@
 package com.example.recyclerviewsyora;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -70,6 +71,12 @@ public class MainActivity extends AppCompatActivity {
             // populate the view with data at 相应的 position
             String name = names.get(position);
             holder.NameTextView.setText(name);
+
+            if(position %2 == 0 ){
+                holder.NameTextView.setBackgroundColor(Color.parseColor("#22000000"));
+            }else{
+                holder.NameTextView.setBackground(null);
+            }
         }
     }
 
